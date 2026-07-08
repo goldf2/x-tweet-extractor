@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const changelogData = [
     {
-      version: '1.1.0',
+      version: '1.1.1',
       date: '2026-07-08',
       changes: [
         { type: 'added', text: '支持在非 X 页面输入用户名自动跳转并提取推文' },

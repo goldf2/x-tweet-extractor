@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-07-08
+
+### Fixed
+
+- 多语言下拉菜单失效：i18n.js文件因使用sed命令插入翻译内容时导致语法错误（多余的},和缺少逗号），修复后多语言切换功能恢复正常
+- 日期过滤和提取参数输入框无法输入：修复了输入框在初始状态下被错误禁用的问题，现在所有输入框均可正常输入
+- 日期过滤功能增强：将单一起始日期过滤改为起止两个日期范围过滤，支持同时指定开始日期和结束日期
+
+### Changed
+
+- 更新日期过滤提示文案为"只提取指定日期范围内的推文（可选）"
+- 更新版本历史记录内容，反映最新功能变更
+
 ## [1.1.0] - 2026-07-08
 
 ### Added
