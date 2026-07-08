@@ -104,6 +104,26 @@
       <h3 data-i18n="previewTitle">预览 (最近5条)</h3>
       <ul id="previewList"></ul>
     </div>
+
+    <div class="footer-section">
+      <div class="version-info">
+        <span class="version-label" data-i18n="versionLabel">版本:</span>
+        <span class="version-value" id="versionValue">1.1.0</span>
+      </div>
+      <button id="changelogBtn" class="btn btn-secondary btn-small" data-i18n="btnChangelog">版本历史</button>
+    </div>
+
+    <div class="changelog-modal" id="changelogModal" style="display:none;">
+      <div class="modal-overlay" id="modalOverlay"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 data-i18n="changelogTitle">版本历史</h3>
+          <button class="modal-close" id="modalClose" data-i18n="btnClose">×</button>
+        </div>
+        <div class="modal-body" id="changelogContent">
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="i18n.js"></script>

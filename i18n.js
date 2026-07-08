@@ -274,7 +274,58 @@ const I18N = {
       th: 'เลือกรูปแบบแล้วคลิกส่งออก',
       vi: 'Chọn định dạng rồi nhấp Xuất'
     },
-    formatJson: {
+    },
+
+    // ===== 版本信息 =====
+    versionLabel: {
+      zh: '版本:', en: 'Version:', ja: 'バージョン:',
+      ar: 'النسخة:', es: 'Versión:', it: 'Versione:',
+      fr: 'Version:', de: 'Version:', pt: 'Versão:',
+      ru: 'Версия:', ko: '버전:', hi: 'संस्करण:',
+      th: 'เวอร์ชัน:', vi: 'Phiên bản:'
+    },
+    btnChangelog: {
+      zh: '版本历史', en: 'Changelog', ja: '更新履歴',
+      ar: 'سجل التغييرات', es: 'Registro de cambios', it: 'Registro delle modifiche',
+      fr: 'Journal des modifications', de: 'Änderungsprotokoll', pt: 'Registro de alterações',
+      ru: 'История изменений', ko: '변경 기록', hi: 'परिवर्तन लॉग',
+      th: 'ประวัติการเปลี่ยนแปลง', vi: 'Lịch sử thay đổi'
+    },
+    changelogTitle: {
+      zh: '版本历史', en: 'Version History', ja: 'バージョン履歴',
+      ar: 'تاريخ النسخ', es: 'Historial de versiones', it: 'Cronologia versioni',
+      fr: 'Historique des versions', de: 'Versionsgeschichte', pt: 'Histórico de versões',
+      ru: 'История версий', ko: '버전 기록', hi: 'संस्करण इतिहास',
+      th: 'ประวัติเวอร์ชัน', vi: 'Lịch sử phiên bản'
+    },
+    btnClose: {
+      zh: '关闭', en: 'Close', ja: '閉じる',
+      ar: 'إغلاق', es: 'Cerrar', it: 'Chiudi',
+      fr: 'Fermer', de: 'Schließen', pt: 'Fechar',
+      ru: 'Закрыть', ko: '닫기', hi: 'बंद करें',
+      th: 'ปิด', vi: 'Đóng'
+    },
+    added: {
+      zh: '新增', en: '+ Added', ja: '+ 追加',
+      ar: '+ أضيف', es: '+ Agregado', it: '+ Aggiunto',
+      fr: '+ Ajouté', de: '+ Hinzugefügt', pt: '+ Adicionado',
+      ru: '+ Добавлено', ko: '+ 추가', hi: '+ जोड़ा',
+      th: '+ เพิ่ม', vi: '+ Thêm'
+    },
+    changed: {
+      zh: '修改', en: '~ Changed', ja: '~ 変更',
+      ar: '~ تم تغيير', es: '~ Cambiado', it: '~ Modificato',
+      fr: '~ Modifié', de: '~ Geändert', pt: '~ Alterado',
+      ru: '~ Изменено', ko: '~ 변경', hi: '~ परिवर्तित',
+      th: '~ เปลี่ยน', vi: '~ Thay đổi'
+    },
+    fixed: {
+      zh: '修复', en: '! Fixed', ja: '! 修正',
+      ar: '! تم إصلاح', es: '! Arreglado', it: '! Corretto',
+      fr: '! Corrigé', de: '! Behoben', pt: '! Corrigido',
+      ru: '! Исправлено', ko: '! 수정', hi: '! ठीक किया',
+      th: '! แก้ไข', vi: '! Sửa'
+    }    formatJson: {
       zh: 'JSON 格式 (.json)', en: 'JSON Format (.json)', ja: 'JSON形式 (.json)',
       ar: 'صيغة JSON (.json)', es: 'Formato JSON (.json)', it: 'Formato JSON (.json)',
       fr: 'Format JSON (.json)', de: 'JSON-Format (.json)', pt: 'Formato JSON (.json)',
