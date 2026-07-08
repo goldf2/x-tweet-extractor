@@ -385,3 +385,50 @@ h1 {
   font-size: 11px;
   margin-top: 2px;
 }
+
+.filter-section {
+  background: #192734;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.filter-title {
+  font-size: 13px;
+  color: #8899a6;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-item label {
+  font-size: 11px;
+  color: #8899a6;
+}
+
+.filter-item input[type="date"] {
+  background: #15202b;
+  border: 1px solid #38444d;
+  border-radius: 6px;
+  color: #e7e9ea;
+  font-size: 13px;
+  padding: 6px 8px;
+  width: 100%;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.filter-item input[type="date"]:focus {
+  border-color: #1d9bf0;
+}
+
+.filter-item input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}

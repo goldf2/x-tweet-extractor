@@ -4,10 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // ====== 初始化 i18n ======
   await I18N.loadLang();
 
-  // 填充语言选择器
   const langSelect = document.getElementById('langSelect');
   for (const [code, info] of Object.entries(I18N.languages)) {
     const opt = document.createElement('option');
@@ -17,22 +15,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     langSelect.appendChild(opt);
   }
 
-  // 应用翻译到 DOM
   I18N.applyToDOM();
 
-  // 语言切换
   langSelect.addEventListener('change', () => {
     I18N.setLang(langSelect.value);
     I18N.applyToDOM();
-    // 重新刷新动态文本
     refreshDynamicTexts();
   });
 
-  // DOM 元素引用
   const els = {
     statusDot: document.getElementById('statusDot'),
     statusText: document.getElementById('statusText'),
     userInput: document.getElementById('userInput'),
+    startDateInput: document.getElementById('startDateInput'),
     maxTweetsInput: document.getElementById('maxTweetsInput'),
     maxScrollsInput: document.getElementById('maxScrollsInput'),
     scrollDelayInput: document.getElementById('scrollDelayInput'),
@@ -56,25 +51,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let currentData = null;
   let isExtracting = false;
+  let isNonXPage = false;
 
-  // i18n 翻译快捷方法
   const t = (key, params) => I18N.t(key, params);
-
-  // ====== 读取用户设置的提取参数 ======
 
   function getExtractOptions() {
     const maxTweets = parseInt(els.maxTweetsInput.value) || 5000;
     const maxScrolls = parseInt(els.maxScrollsInput.value) || 500;
     const scrollDelay = parseInt(els.scrollDelayInput.value) || 1000;
+    const startDate = els.startDateInput.value || null;
 
     return {
       maxTweets: Math.max(1, Math.min(maxTweets, 50000)),
       maxScrolls: Math.max(1, Math.min(maxScrolls, 5000)),
-      scrollDelay: Math.max(300, Math.min(scrollDelay, 10000))
+      scrollDelay: Math.max(300, Math.min(scrollDelay, 10000)),
+      startDate
     };
   }
-
-  // ====== 状态管理 ======
 
   function setStatus(type, text) {
     els.statusDot.className = 'status-dot';
@@ -100,6 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       els.extractBtn.style.display = 'none';
       els.stopBtn.style.display = 'block';
       els.userInput.disabled = true;
+      els.startDateInput.disabled = true;
       els.maxTweetsInput.disabled = true;
       els.maxScrollsInput.disabled = true;
       els.scrollDelayInput.disabled = true;
@@ -107,6 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       els.extractBtn.style.display = 'block';
       els.stopBtn.style.display = 'none';
       els.userInput.disabled = false;
+      els.startDateInput.disabled = false;
       els.maxTweetsInput.disabled = false;
       els.maxScrollsInput.disabled = false;
       els.scrollDelayInput.disabled = false;
@@ -128,7 +123,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     els.exportSection.style.display = hasData ? 'block' : 'none';
     els.clearBtn.disabled = !hasData;
 
-    // 预览
     if (tweets && tweets.length > 0) {
       els.tweetPreview.style.display = 'block';
       els.previewList.innerHTML = tweets.slice(0, 5).map(tweet => {
@@ -151,16 +145,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     return div.innerHTML;
   }
 
-  // 切换语言后刷新动态文本
   function refreshDynamicTexts() {
     if (currentData) {
       updateUI(currentData);
     }
-    // 刷新导出提示
     updateExportHint();
   }
-
-  // ====== 与 Content Script 通信 ======
 
   async function getCurrentTab() {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -243,8 +233,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // ====== 事件处理 ======
-
   els.extractBtn.addEventListener('click', async () => {
     if (isExtracting) return;
 
@@ -256,14 +244,22 @@ document.addEventListener('DOMContentLoaded', async () => {
       els.progressText.textContent = t('progressInit');
 
       const inputUser = els.userInput.value.trim();
+      const tab = await getCurrentTab();
+      const currentUrl = tab?.url || '';
+      const isOnXPage = currentUrl.match(/^https:\/\/(x\.com|twitter\.com)/);
+
       if (inputUser) {
         await navigateToUser(inputUser);
+        isNonXPage = !isOnXPage;
         setStatus('extracting', t('pageLoading'));
         const ready = await ensureContentScript();
         if (!ready) {
           throw new Error(t('errNoScript'));
         }
       } else {
+        if (!isOnXPage) {
+          throw new Error(t('errNotXPageNoUser'));
+        }
         const ready = await ensureContentScript();
         if (!ready) {
           throw new Error(t('errNoScriptCurrent'));
@@ -310,8 +306,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       els.extractBtn.click();
     }
   });
-
-  // ====== 统一导出逻辑 ======
 
   els.exportBtn.addEventListener('click', async () => {
     const format = els.exportFormat.value;
@@ -374,8 +368,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   els.exportFormat.addEventListener('change', updateExportHint);
-
-  // ====== 各格式生成函数 ======
 
   function exportJSON(data, baseFilename) {
     const payload = {
@@ -579,8 +571,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // ====== 监听来自 content script 的消息 ======
-
   chrome.runtime.onMessage.addListener((message) => {
     if (message.type === 'extraction-progress') {
       const { progress, stats } = message;
@@ -615,15 +605,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // ====== 初始化 ======
-
   async function init() {
     setStatus('ready', t('ready'));
 
     const tab = await getCurrentTab();
     const url = tab?.url || '';
-    if (!url.match(/^https:\/\/(x\.com|twitter\.com)/)) {
+    const isOnXPage = url.match(/^https:\/\/(x\.com|twitter\.com)/);
+
+    if (!isOnXPage) {
       setStatus('ready', t('msgStartPage'));
+      els.userInput.focus();
       return;
     }
 

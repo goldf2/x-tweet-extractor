@@ -10,7 +10,7 @@
     <div class="header-row">
       <div>
         <h1 data-i18n="appTitle">X Tweet Extractor</h1>
-        <p class="subtitle" data-i18n="subtitle">提取当前页面用户的推文</p>
+        <p class="subtitle" data-i18n="subtitle">提取 X 用户推文并导出</p>
       </div>
       <select id="langSelect" class="lang-select" title="Language"></select>
     </div>
@@ -26,7 +26,16 @@
         <span class="input-prefix">@</span>
         <input type="text" id="userInput" class="text-input" data-i18n-placeholder="usernamePlaceholder" placeholder="输入用户名" autocomplete="off">
       </div>
-      <p class="input-hint" data-i18n="usernameHint">留空则提取当前打开页面的用户推文</p>
+      <p class="input-hint" data-i18n="usernameHint">输入用户名后自动跳转并提取</p>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" data-i18n="filterTitle">过滤条件</div>
+      <div class="filter-item">
+        <label for="startDateInput" data-i18n="startDate">起始日期</label>
+        <input type="date" id="startDateInput">
+      </div>
+      <p class="input-hint" data-i18n="filterHint">只提取指定日期之后的推文（可选）</p>
     </div>
 
     <div class="settings-section">

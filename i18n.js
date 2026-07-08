@@ -41,7 +41,7 @@ const I18N = {
       th: 'X Tweet Extractor', vi: 'X Tweet Extractor'
     },
     subtitle: {
-      zh: '提取当前页面用户的推文',
+      zh: '提取 X 用户推文并导出',
       en: 'Extract tweets from the current page user',
       ja: '現在のページのユーザーのツイートを抽出',
       ar: 'استخراج تغريدات المستخدم من الصفحة الحالية',
@@ -96,7 +96,7 @@ const I18N = {
       vi: 'Nhập tên người dùng, vd: elonmusk'
     },
     usernameHint: {
-      zh: '留空则提取当前打开页面的用户推文',
+      zh: '输入用户名后自动跳转并提取',
       en: 'Leave empty to extract from current page',
       ja: '空欄の場合は現在のページから抽出',
       ar: 'اتركه فارغًا للاستخراج من الصفحة الحالية',
@@ -157,6 +157,38 @@ const I18N = {
       th: 'เลื่อนมาก = ทวีตมากแต่ช้ากว่า',
       vi: 'Cuộn nhiều = tweet nhiều nhưng chậm hơn'
     },
+
+    // ===== 过滤条件 =====
+    filterTitle: {
+      zh: '过滤条件', en: 'Filter Options', ja: 'フィルター条件',
+      ar: 'خيارات التصفية', es: 'Opciones de filtro', it: 'Opzioni di filtro',
+      fr: 'Options de filtre', de: 'Filteroptionen', pt: 'Opções de filtro',
+      ru: 'Параметры фильтра', ko: '필터 옵션', hi: 'फ़िल्टर विकल्प',
+      th: 'ตัวเลือกกรอง', vi: 'Tùy chọn lọc'
+    },
+    startDate: {
+      zh: '起始日期', en: 'Start Date', ja: '開始日',
+      ar: 'التاريخ البدء', es: 'Fecha de inicio', it: 'Data di inizio',
+      fr: 'Date de début', de: 'Startdatum', pt: 'Data de início',
+      ru: 'Дата начала', ko: '시작 날짜', hi: 'प्रारंभ तिथि',
+      th: 'วันที่เริ่ม', vi: 'Ngày bắt đầu'
+    },
+    filterHint: {
+      zh: '只提取指定日期之后的推文（可选）',
+      en: 'Only extract tweets after this date (optional)',
+      ja: '指定日以降のツイートのみ抽出（オプション）',
+      ar: 'استخرج التغريدات فقط بعد هذا التاريخ (اختياري)',
+      es: 'Extraer solo tweets después de esta fecha (opcional)',
+      it: 'Estrai solo tweet dopo questa data (opzionale)',
+      fr: 'Extraire seulement les tweets après cette date (optionnel)',
+      de: 'Nur Tweets nach diesem Datum extrahieren (optional)',
+      pt: 'Extrair apenas tweets após esta data (opcional)',
+      ru: 'Извлекать только твиты после этой даты (по желанию)',
+      ko: '이 날짜 이후 트윗만 추출 (선택 사항)',
+      hi: 'इस तिथि के बाद के ट्वीट ही निकालें (वैकल्पिक)',
+      th: 'ดึงเฉพาะทวีตหลังวันที่นี้ (ไม่บังคับ)',
+      vi: 'Chỉ trích xuất tweet sau ngày này (tùy chọn)'
+    },    },
 
     // ===== 信息面板 =====
     labelUser: {
@@ -567,7 +599,23 @@ const I18N = {
       th: 'กรุณาใช้ส่วนขยายนี้บนหน้า X (Twitter)',
       vi: 'Vui lòng sử dụng tiện ích này trên trang X (Twitter)'
     },
-    errNoScript: {
+    },
+    errNotXPageNoUser: {
+      zh: '请输入用户名，扩展将自动跳转到 X 页面',
+      en: 'Please enter a username. The extension will navigate to X automatically',
+      ja: 'Enter username to navigate',
+      ar: 'Enter username to navigate',
+      es: 'Enter username to navigate',
+      it: 'Enter username to navigate',
+      fr: 'Enter username to navigate',
+      de: 'Enter username to navigate',
+      pt: 'Enter username to navigate',
+      ru: 'Enter username to navigate',
+      ko: 'Enter username to navigate',
+      hi: 'Enter username to navigate',
+      th: 'Enter username to navigate',
+      vi: 'Enter username to navigate'
+    },    errNoScript: {
       zh: '无法连接到页面脚本，请确认已在 X 页面并刷新后重试',
       en: 'Cannot connect to page script. Ensure you are on an X page and refresh',
       ja: 'ページスクリプトに接続できません。Xページで更新してください',
