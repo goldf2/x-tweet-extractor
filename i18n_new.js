@@ -232,6 +232,124 @@ const I18N = {
       ja: '形式を選択してエクスポートをクリック',
       ar: 'اختر تنسيقًا ثم انقر على تصدير',
       es: 'Seleccione un formato y haga clic en Exportar',
+
+      it: 'Seleziona un formato e clicca Esporta',
+      fr: 'Selectionnez un format puis cliquez Exporter',
+      de: 'Format wahlen dann auf Exportieren klicken',
+      pt: 'Selecione um formato e clique em Exportar',
+      ru: 'Vyberite format i naymite Export',
+      ko: 'Hyeongsik-eul seontaekhago nabaeneogi keulik',
+      hi: 'Prarup chunenge phir niryat click karen',
+      th: 'Leua rupbap laew klik songxok',
+      vi: 'Chon dinh dang roi nhap Xuat'
+    },
+
+    // ===== 过滤条件 =====
+    filterTitle: {
+      zh: '过滤条件', en: 'Filter Options', ja: 'Firuta Joken',
+      ar: 'Khayarat Al-Tasfiyah', es: 'Opciones de filtro', it: 'Opzioni di filtro',
+      fr: 'Options de filtre', de: 'Filteroptionen', pt: 'Opcies de filtro',
+      ru: 'Parametry filtra', ko: 'Pilteo Opsyeon', hi: 'Filter Vikalp',
+      th: 'Tua Lek Kongrong', vi: 'Tuy chon loc'
+    },
+    startDate: {
+      zh: '起始日期', en: 'Start Date', ja: 'Kaishibi',
+      ar: 'Al-Tarikh Al-Bada', es: 'Fecha de inicio', it: 'Data di inizio',
+      fr: 'Date de debut', de: 'Startdatum', pt: 'Data de inicio',
+      ru: 'Data nachala', ko: 'Sigan Nalja', hi: 'Prarambh Tithi',
+      th: 'Wanthi Rim', vi: 'Ngay bat dau'
+    },
+    endDate: {
+      zh: '结束日期', en: 'End Date', ja: 'Shuryobi',
+      ar: 'Al-Tarikh Al-Nihayi', es: 'Fecha de fin', it: 'Data di fine',
+      fr: 'Date de fin', de: 'Enddatum', pt: 'Data de fim',
+      ru: 'Data okonchaniya', ko: 'Jongryo Nalja', hi: 'Samapti Tithi',
+      th: 'Wanthi Sin Sud', vi: 'Ngay ket thuc'
+    },
+    filterHint: {
+      zh: '只提取指定日期范围内的推文（可选）',
+      en: 'Only extract tweets within date range (optional)',
+      ja: 'Shitei nichi hanai no tsuwiito dake chushutsu',
+      ar: 'Istehkraj al-taghreedat fi mizan al-tarikh',
+      es: 'Extraer solo tweets dentro del rango de fechas',
+      it: 'Estrai solo tweet nell\'intervallo di date',
+      fr: 'Extraire seulement les tweets dans la plage de dates',
+      de: 'Nur Tweets im Datumsbereich extrahieren',
+      pt: 'Extrair apenas tweets dentro do intervalo de datas',
+      ru: 'Izvekat tolko tvity v diapazone dat',
+      ko: 'Jijeonghan naljja beomwi nae twito man chuchul',
+      hi: 'Dinamk seema ke bheetar ke tweet hi nikale',
+      th: 'Deng chep twit nai chwng wanthi',
+      vi: 'Chi trich xuat tweet trong khoang ngay'
+    },
+
+    // ===== 错误消息 =====
+    errNotXPageNoUser: {
+      zh: '请输入用户名，扩展将自动跳转到 X 页面',
+      en: 'Please enter a username. The extension will navigate to X automatically',
+      ja: 'Enter username to navigate',
+      ar: 'Enter username to navigate',
+      es: 'Enter username to navigate',
+      it: 'Enter username to navigate',
+      fr: 'Enter username to navigate',
+      de: 'Enter username to navigate',
+      pt: 'Enter username to navigate',
+      ru: 'Enter username to navigate',
+      ko: 'Enter username to navigate',
+      hi: 'Enter username to navigate',
+      th: 'Enter username to navigate',
+      vi: 'Enter username to navigate'
+    },
+    // ===== 版本信息 =====
+    versionLabel: {
+      zh: '版本:', en: 'Version:', ja: 'バージョン:',
+      ar: 'النسخة:', es: 'Versión:', it: 'Versione:',
+      fr: 'Version:', de: 'Version:', pt: 'Versão:',
+      ru: 'Версия:', ko: '버전:', hi: 'संस्करण:',
+      th: 'เวอร์ชัน:', vi: 'Phiên bản:'
+    },
+    btnChangelog: {
+      zh: '版本历史', en: 'Changelog', ja: '更新履歴',
+      ar: 'سجل التغييرات', es: 'Registro de cambios', it: 'Registro delle modifiche',
+      fr: 'Journal des modifications', de: 'Änderungsprotokoll', pt: 'Registro de alterações',
+      ru: 'История изменений', ko: '변경 기록', hi: 'परिवर्तन लॉग',
+      th: 'ประวัติการเปลี่ยนแปลง', vi: 'Lịch sử thay đổi'
+    },
+    changelogTitle: {
+      zh: '版本历史', en: 'Version History', ja: 'バージョン履歴',
+      ar: 'تاريخ النسخ', es: 'Historial de versiones', it: 'Cronologia versioni',
+      fr: 'Historique des versions', de: 'Versionsgeschichte', pt: 'Histórico de versões',
+      ru: 'История версий', ko: '버전 기록', hi: 'संस्करण इतिहास',
+      th: 'ประวัติเวอร์ชัน', vi: 'Lịch sử phiên bản'
+    },
+    btnClose: {
+      zh: '关闭', en: 'Close', ja: '閉じる',
+      ar: 'إغلاق', es: 'Cerrar', it: 'Chiudi',
+      fr: 'Fermer', de: 'Schließen', pt: 'Fechar',
+      ru: 'Закрыть', ko: '닫기', hi: 'बंद करें',
+      th: 'ปิด', vi: 'Đóng'
+    },
+    added: {
+      zh: '新增', en: '+ Added', ja: '+ 追加',
+      ar: '+ أضيف', es: '+ Agregado', it: '+ Aggiunto',
+      fr: '+ Ajouté', de: '+ Hinzugefügt', pt: '+ Adicionado',
+      ru: '+ Добавлено', ko: '+ 추가', hi: '+ जोड़ा',
+      th: '+ เพิ่ม', vi: '+ Thêm'
+    },
+    changed: {
+      zh: '修改', en: '~ Changed', ja: '~ 変更',
+      ar: '~ تم تغيير', es: '~ Cambiado', it: '~ Modificato',
+      fr: '~ Modifié', de: '~ Geändert', pt: '~ Alterado',
+      ru: '~ Изменено', ko: '~ 변경', hi: '~ परिवर्तित',
+      th: '~ เปลี่ยน', vi: '~ Thay đổi'
+    },
+    fixed: {
+      zh: '修复', en: '! Fixed', ja: '! 修正',
+      ar: '! تم إصلاح', es: '! Arreglado', it: '! Corretto',
+      fr: '! Corrigé', de: '! Behoben', pt: '! Corrigido',
+      ru: '! Исправлено', ko: '! 수정', hi: '! ठीक किया',
+      th: '! แก้ไข', vi: '! Sửa'
+    },
       it: 'Seleziona un formato e clicca Esporta',
       fr: 'Sélectionnez un format puis cliquez Exporter',
       de: 'Format wählen dann auf Exportieren klicken',
@@ -242,60 +360,7 @@ const I18N = {
       th: 'เลือกรูปแบบแล้วคลิกส่งออก',
       vi: 'Chọn định dạng rồi nhấp Xuất'
     },
-
-    filterTitle: {
-      zh: '过滤条件', en: 'Filter Options', ja: 'フィルター条件',
-      ar: 'Filter', es: 'Filtro', it: 'Filtro',
-      fr: 'Filtre', de: 'Filter', pt: 'Filtro',
-      ru: 'Filter', ko: '필터', hi: 'Filter',
-      th: 'Filter', vi: 'Filter'
-    },
-    startDate: {
-      zh: '起始日期', en: 'Start Date', ja: '開始日',
-      ar: 'Start', es: 'Inicio', it: 'Inizio',
-      fr: 'Debut', de: 'Start', pt: 'Inicio',
-      ru: 'Start', ko: '시작', hi: 'Start',
-      th: 'Start', vi: 'Bat dau'
-    },
-    endDate: {
-      zh: '结束日期', en: 'End Date', ja: '終了日',
-      ar: 'End', es: 'Fin', it: 'Fine',
-      fr: 'Fin', de: 'Ende', pt: 'Fim',
-      ru: 'End', ko: '종료', hi: 'End',
-      th: 'End', vi: 'Ket thuc'
-    },
-    filterHint: {
-      zh: '只提取指定日期范围内的推文（可选）',
-      en: 'Only extract tweets within date range (optional)',
-      ja: 'Date range filter',
-      ar: 'Date range',
-      es: 'Rango de fecha',
-      it: 'Intervallo date',
-      fr: 'Plage de dates',
-      de: 'Datumsbereich',
-      pt: 'Intervalo de datas',
-      ru: 'Daty',
-      ko: '날짜 범위',
-      hi: 'Date range',
-      th: 'Khung ngay',
-      vi: 'Khoang ngay'
-    },
-    errNotXPageNoUser: {
-      zh: '请输入用户名，扩展将自动跳转到 X 页面',
-      en: 'Please enter username to navigate',
-      ja: 'Enter username',
-      ar: 'Enter username',
-      es: 'Enter username',
-      it: 'Enter username',
-      fr: 'Enter username',
-      de: 'Enter username',
-      pt: 'Enter username',
-      ru: 'Enter username',
-      ko: 'Enter username',
-      hi: 'Enter username',
-      th: 'Enter username',
-      vi: 'Enter username'
-    },    formatJson: {
+    formatJson: {
       zh: 'JSON 格式 (.json)', en: 'JSON Format (.json)', ja: 'JSON形式 (.json)',
       ar: 'صيغة JSON (.json)', es: 'Formato JSON (.json)', it: 'Formato JSON (.json)',
       fr: 'Format JSON (.json)', de: 'JSON-Format (.json)', pt: 'Formato JSON (.json)',

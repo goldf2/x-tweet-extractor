@@ -598,3 +598,12 @@ h1 {
   background: #f4212e;
   color: #fff;
 }
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-row .filter-item {
+  flex: 1;
+}

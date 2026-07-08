@@ -31,11 +31,17 @@
 
     <div class="filter-section">
       <div class="filter-title" data-i18n="filterTitle">过滤条件</div>
-      <div class="filter-item">
-        <label for="startDateInput" data-i18n="startDate">起始日期</label>
-        <input type="date" id="startDateInput">
+      <div class="filter-row">
+        <div class="filter-item">
+          <label for="startDateInput" data-i18n="startDate">起始日期</label>
+          <input type="date" id="startDateInput">
+        </div>
+        <div class="filter-item">
+          <label for="endDateInput" data-i18n="endDate">结束日期</label>
+          <input type="date" id="endDateInput">
+        </div>
       </div>
-      <p class="input-hint" data-i18n="filterHint">只提取指定日期之后的推文（可选）</p>
+      <p class="input-hint" data-i18n="filterHint">只提取指定日期范围内的推文（可选）</p>
     </div>
 
     <div class="settings-section">

@@ -129,17 +129,42 @@
     return parseInt(clean) || 0;
   }
 
-  function isTweetAfterDate(tweet, startDate) {
-    if (!startDate) return true;
+  function isTweetInDateRange(tweet, startDate, endDate) {
+    const tweetDate = tweet.timestamp ? new Date(tweet.timestamp) : null;
+    if (!tweetDate || isNaN(tweetDate.getTime())) {
+      return true;
+    }
+
+    if (startDate) {
+      const cutoffStart = new Date(startDate);
+      cutoffStart.setHours(0, 0, 0, 0);
+      if (tweetDate < cutoffStart) {
+        return false;
+      }
+    }
+
+    if (endDate) {
+      const cutoffEnd = new Date(endDate);
+      cutoffEnd.setHours(23, 59, 59, 999);
+      if (tweetDate > cutoffEnd) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function isTweetBeforeStartDate(tweet, startDate) {
+    if (!startDate) return false;
 
     const tweetDate = tweet.timestamp ? new Date(tweet.timestamp) : null;
     if (tweetDate && !isNaN(tweetDate.getTime())) {
       const cutoffDate = new Date(startDate);
       cutoffDate.setHours(0, 0, 0, 0);
-      return tweetDate >= cutoffDate;
+      return tweetDate < cutoffDate;
     }
 
-    return true;
+    return false;
   }
 
   async function extractTweets(options = {}) {
@@ -147,6 +172,7 @@
     const maxScrolls = options.maxScrolls || 500;
     const scrollDelay = options.scrollDelay || 1000;
     const startDate = options.startDate || null;
+    const endDate = options.endDate || null;
 
     if (isExtracting) {
       return { success: false, error: '正在提取中，请稍候...' };
@@ -176,7 +202,7 @@
         articles.forEach(article => {
           const tweet = parseTweetElement(article);
           if (tweet && tweet.id && !seenIds.has(tweet.id)) {
-            if (isTweetAfterDate(tweet, startDate)) {
+            if (isTweetInDateRange(tweet, startDate, endDate)) {
               seenIds.add(tweet.id);
               extractedTweets.push(tweet);
               newFound++;
@@ -187,11 +213,11 @@
         if (startDate && articles.length > 0) {
           const oldestArticle = articles[articles.length - 1];
           const oldestTweet = parseTweetElement(oldestArticle);
-          if (oldestTweet && !isTweetAfterDate(oldestTweet, startDate)) {
+          if (oldestTweet && isTweetBeforeStartDate(oldestTweet, startDate)) {
             let allOlder = true;
             for (let i = Math.max(0, articles.length - 3); i < articles.length; i++) {
               const t = parseTweetElement(articles[i]);
-              if (t && isTweetAfterDate(t, startDate)) {
+              if (t && !isTweetBeforeStartDate(t, startDate)) {
                 allOlder = false;
                 break;
               }

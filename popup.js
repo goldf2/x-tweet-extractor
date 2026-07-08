@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     statusText: document.getElementById('statusText'),
     userInput: document.getElementById('userInput'),
     startDateInput: document.getElementById('startDateInput'),
+    endDateInput: document.getElementById('endDateInput'),
     maxTweetsInput: document.getElementById('maxTweetsInput'),
     maxScrollsInput: document.getElementById('maxScrollsInput'),
     scrollDelayInput: document.getElementById('scrollDelayInput'),
@@ -57,7 +58,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let currentData = null;
   let isExtracting = false;
-  let isNonXPage = false;
 
   const t = (key, params) => I18N.t(key, params);
 
@@ -66,12 +66,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const maxScrolls = parseInt(els.maxScrollsInput.value) || 500;
     const scrollDelay = parseInt(els.scrollDelayInput.value) || 1000;
     const startDate = els.startDateInput.value || null;
+    const endDate = els.endDateInput.value || null;
 
     return {
       maxTweets: Math.max(1, Math.min(maxTweets, 50000)),
       maxScrolls: Math.max(1, Math.min(maxScrolls, 5000)),
       scrollDelay: Math.max(300, Math.min(scrollDelay, 10000)),
-      startDate
+      startDate,
+      endDate
     };
   }
 
@@ -100,6 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       els.stopBtn.style.display = 'block';
       els.userInput.disabled = true;
       els.startDateInput.disabled = true;
+      els.endDateInput.disabled = true;
       els.maxTweetsInput.disabled = true;
       els.maxScrollsInput.disabled = true;
       els.scrollDelayInput.disabled = true;
@@ -108,6 +111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       els.stopBtn.style.display = 'none';
       els.userInput.disabled = false;
       els.startDateInput.disabled = false;
+      els.endDateInput.disabled = false;
       els.maxTweetsInput.disabled = false;
       els.maxScrollsInput.disabled = false;
       els.scrollDelayInput.disabled = false;
@@ -256,7 +260,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       if (inputUser) {
         await navigateToUser(inputUser);
-        isNonXPage = !isOnXPage;
         setStatus('extracting', t('pageLoading'));
         const ready = await ensureContentScript();
         if (!ready) {
@@ -663,7 +666,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       date: '2026-07-08',
       changes: [
         { type: 'added', text: '支持在非 X 页面输入用户名自动跳转并提取推文' },
-        { type: 'added', text: '添加日期过滤器，可选择起始日期只提取该日期之后的推文' },
+        { type: 'added', text: '添加日期过滤器，支持起止两个日期筛选' },
         { type: 'added', text: '优化提取逻辑，当到达日期限制时自动停止滚动' },
         { type: 'added', text: '在弹窗中显示版本号信息' },
         { type: 'added', text: '添加版本历史查看功能' },
