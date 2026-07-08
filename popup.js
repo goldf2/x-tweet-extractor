@@ -48,12 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     progressText: document.getElementById('progressText'),
     tweetPreview: document.getElementById('tweetPreview'),
     previewList: document.getElementById('previewList'),
-    versionValue: document.getElementById('versionValue'),
-    changelogBtn: document.getElementById('changelogBtn'),
-    changelogModal: document.getElementById('changelogModal'),
-    modalOverlay: document.getElementById('modalOverlay'),
-    modalClose: document.getElementById('modalClose'),
-    changelogContent: document.getElementById('changelogContent')
+    versionValue: document.getElementById('versionValue')
   };
 
   let currentData = null;
@@ -326,7 +321,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const handle = data.stats?.userHandle || 'user';
-    const timestamp = new Date().toISOString().slice(0, 10);
+    const timestamp = new Date().toISOString().slice(0, 5);
     const baseFilename = `x_tweets_${handle}_${timestamp}`;
 
     let fileData = '';
@@ -659,61 +654,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   init();
-
-  const changelogData = [
-    {
-      version: '1.1.1',
-      date: '2026-07-08',
-      changes: [
-        { type: 'added', text: '支持在非 X 页面输入用户名自动跳转并提取推文' },
-        { type: 'added', text: '添加日期过滤器，支持起止两个日期筛选' },
-        { type: 'added', text: '优化提取逻辑，当到达日期限制时自动停止滚动' },
-        { type: 'added', text: '在弹窗中显示版本号信息' },
-        { type: 'added', text: '添加版本历史查看功能' },
-        { type: 'changed', text: '更新弹窗副标题和用户名提示文案' }
-      ]
-    },
-    {
-      version: '1.0.0',
-      date: '2026-07-08',
-      changes: [
-        { type: 'added', text: '初始化项目' },
-        { type: 'added', text: '支持自动滚动提取用户主页推文' },
-        { type: 'added', text: '支持导出 JSON/CSV/TXT/HTML/Markdown 格式' },
-        { type: 'added', text: '支持输入用户名自动跳转' },
-        { type: 'added', text: '提取过程中可随时停止' },
-        { type: 'added', text: '多语言支持（14种语言）' },
-        { type: 'added', text: '暗黑主题 UI' }
-      ]
-    }
-  ];
-
-  function renderChangelog() {
-    const typeLabels = {
-      added: t('added') || '+',
-      changed: t('changed') || '~',
-      fixed: t('fixed') || '!'
-    };
-    els.changelogContent.innerHTML = changelogData.map(entry => {
-      const changesHtml = entry.changes.map(c =>
-        `<li><span class="change-type ${c.type}">${typeLabels[c.type]}</span>${c.text}</li>`
-      ).join('\n');
-      return `<h4>${entry.version}<span class="version-date">${entry.date}</span></h4><ul>${changesHtml}</ul>`;
-    }).join('\n');
-  }
-
-  els.changelogBtn.addEventListener('click', () => {
-    renderChangelog();
-    els.changelogModal.style.display = 'block';
-  });
-
-  els.modalClose.addEventListener('click', () => {
-    els.changelogModal.style.display = 'none';
-  });
-
-  els.modalOverlay.addEventListener('click', () => {
-    els.changelogModal.style.display = 'none';
-  });
 
   async function loadVersion() {
     try {
