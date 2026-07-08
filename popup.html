@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>X Tweet Extractor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header-row">
+      <div>
+        <h1 data-i18n="appTitle">X Tweet Extractor</h1>
+        <p class="subtitle" data-i18n="subtitle">提取当前页面用户的推文</p>
+      </div>
+      <select id="langSelect" class="lang-select" title="Language"></select>
+    </div>
+
+    <div class="status-box" id="statusBox">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText" data-i18n="ready">准备就绪</span>
+    </div>
+
+    <div class="input-section">
+      <label class="input-label" for="userInput" data-i18n="usernameLabel">X 用户名</label>
+      <div class="input-row">
+        <span class="input-prefix">@</span>
+        <input type="text" id="userInput" class="text-input" data-i18n-placeholder="usernamePlaceholder" placeholder="输入用户名" autocomplete="off">
+      </div>
+      <p class="input-hint" data-i18n="usernameHint">留空则提取当前打开页面的用户推文</p>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-title" data-i18n="settingsTitle">提取参数</div>
+      <div class="settings-grid">
+        <div class="setting-item">
+          <label for="maxTweetsInput" data-i18n="maxTweets">最大推文数</label>
+          <input type="number" id="maxTweetsInput" value="5000" min="1" max="50000">
+        </div>
+        <div class="setting-item">
+          <label for="maxScrollsInput" data-i18n="maxScrolls">最大滚动次数</label>
+          <input type="number" id="maxScrollsInput" value="500" min="1" max="5000">
+        </div>
+        <div class="setting-item">
+          <label for="scrollDelayInput" data-i18n="scrollDelay">滚动间隔 (毫秒)</label>
+          <input type="number" id="scrollDelayInput" value="1000" min="300" max="10000" step="100">
+        </div>
+      </div>
+      <p class="input-hint" data-i18n="settingsHint">滚动次数越大提取越多但越慢；间隔太短可能加载不全</p>
+    </div>
+
+    <div class="info-panel" id="infoPanel" style="display:none;">
+      <div class="info-item">
+        <span class="label" data-i18n="labelUser">用户:</span>
+        <span class="value" id="userName">-</span>
+      </div>
+      <div class="info-item">
+        <span class="label" data-i18n="labelHandle">@用户名:</span>
+        <span class="value" id="userHandle">-</span>
+      </div>
+      <div class="info-item">
+        <span class="label" data-i18n="labelExtracted">已提取:</span>
+        <span class="value" id="tweetCount">0</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="extractBtn" class="btn btn-primary" data-i18n="btnExtract">开始提取推文</button>
+      <button id="stopBtn" class="btn btn-stop" style="display:none;" data-i18n="btnStop">停止提取</button>
+      <button id="clearBtn" class="btn btn-danger" disabled data-i18n="btnClear">清除数据</button>
+    </div>
+
+    <div class="export-section" id="exportSection" style="display:none;">
+      <div class="export-title" data-i18n="exportTitle">导出数据</div>
+      <div class="export-row">
+        <select id="exportFormat" class="export-select">
+          <option value="json" data-i18n="formatJson">JSON 格式 (.json)</option>
+          <option value="csv" data-i18n="formatCsv">CSV 格式 (.csv)</option>
+          <option value="txt" data-i18n="formatTxt">TXT 纯文本 (.txt)</option>
+          <option value="html" data-i18n="formatHtml">HTML 网页 (.html)</option>
+          <option value="md" data-i18n="formatMd">Markdown (.md)</option>
+        </select>
+        <button id="exportBtn" class="btn btn-export" data-i18n="btnExport">导出</button>
+      </div>
+      <p class="input-hint" id="exportHint" data-i18n="exportHintDefault">选择格式后点击导出</p>
+    </div>
+
+    <div class="progress-section" id="progressSection" style="display:none;">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-text" id="progressText" data-i18n="progressExtracting">提取中...</p>
+    </div>
+
+    <div class="tweet-preview" id="tweetPreview" style="display:none;">
+      <h3 data-i18n="previewTitle">预览 (最近5条)</h3>
+      <ul id="previewList"></ul>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

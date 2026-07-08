@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "X Tweet Extractor",
+    "description": "Chrome ウェブストアとツールバーに表示される拡張機能名"
+  },
+  "extDescription": {
+    "message": "X (Twitter) ユーザーのツイートを抽出し、JSON、CSV、TXT、HTML、Markdown 形式でエクスポートします。個人データバックアップ用。",
+    "description": "Chrome ウェブストアの検索結果に表示される簡単な説明（最大132文字）"
+  }
+}

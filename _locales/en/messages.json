@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "X Tweet Extractor",
+    "description": "Extension name displayed in Chrome Web Store and toolbar"
+  },
+  "extDescription": {
+    "message": "Extract tweets from X (Twitter) user profiles and export to JSON, CSV, TXT, HTML, or Markdown. For personal data backup use only.",
+    "description": "Short description shown in Chrome Web Store search results (max 132 chars)"
+  }
+}

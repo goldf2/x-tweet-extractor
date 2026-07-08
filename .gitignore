@@ -1,0 +1,26 @@
+# 依赖
+node_modules/
+package-lock.json
+yarn.lock
+
+# 构建产物
+dist/
+build/
+*.zip
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 系统文件
+*.log
+*.tmp
+
+# 浏览器扩展开发临时文件
+.crx
+.pem
+key.pem

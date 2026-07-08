@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - X Tweet Extractor</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #15202b; color: #e7e9ea; max-width: 720px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; }
+    h1 { color: #1d9bf0; font-size: 28px; margin-bottom: 8px; }
+    h2 { color: #1d9bf0; font-size: 20px; margin-top: 32px; margin-bottom: 12px; }
+    .updated { color: #8899a6; font-size: 14px; margin-bottom: 24px; }
+    p { margin-bottom: 12px; }
+    ul { margin-bottom: 16px; padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    .highlight { background: #192734; padding: 2px 6px; border-radius: 4px; color: #1d9bf0; }
+    .contact { background: #192734; border-radius: 8px; padding: 16px; margin-top: 24px; border-left: 3px solid #1d9bf0; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: July 5, 2026</p>
+
+  <p>This privacy policy describes how the <strong>X Tweet Extractor</strong> browser extension ("the Extension") handles user data. By installing and using the Extension, you agree to the practices described below.</p>
+
+  <h2>1. Data We Collect</h2>
+  <p>The Extension processes the following types of data:</p>
+  <ul>
+    <li><strong>Public tweet content</strong> — text, timestamps, and engagement metrics (likes, retweets, replies) that are publicly visible on X (Twitter) user profile pages you visit.</li>
+    <li><strong>Language preference</strong> — your selected UI language, stored locally in the browser.</li>
+  </ul>
+
+  <h2>2. How We Use Your Data</h2>
+  <p>The Extension uses the collected data solely for the following purposes:</p>
+  <ul>
+    <li>To extract and display tweets from the current X profile page.</li>
+    <li>To export extracted tweets into downloadable files (JSON, CSV, TXT, HTML, Markdown).</li>
+    <li>To remember your language preference for the Extension interface.</li>
+  </ul>
+
+  <h2>3. Data Storage and Transmission</h2>
+  <p><strong>Local storage only.</strong> All extracted tweet data is stored temporarily in the browser's memory (page-level JavaScript variables). The Extension does <strong>NOT</strong>:</p>
+  <ul>
+    <li>Upload, send, or transmit any data to any external server or third-party service.</li>
+    <li>Use analytics, tracking pixels, or advertising SDKs.</li>
+    <li>Store extracted tweet data persistently — data is cleared when you close the tab or click "Clear Data".</li>
+  </ul>
+  <p>The only persistent storage is your UI language preference, saved via <span class="highlight">chrome.storage.local</span>.</p>
+
+  <h2>4. Permissions We Request</h2>
+  <ul>
+    <li><strong>activeTab</strong> — Access the current X page content when you activate the Extension.</li>
+    <li><strong>scripting</strong> — Inject the extraction script into x.com pages.</li>
+    <li><strong>storage</strong> — Save your language preference locally.</li>
+    <li><strong>downloads</strong> — Save exported files to your computer.</li>
+    <li><strong>host_permissions (x.com, twitter.com)</strong> — Run only on X (Twitter) domains.</li>
+  </ul>
+
+  <h2>5. Third-Party Services</h2>
+  <p>The Extension does <strong>NOT</strong> integrate with or send data to any third-party service, API, or analytics platform.</p>
+
+  <h2>6. User Rights</h2>
+  <ul>
+    <li>You can clear all extracted data at any time by clicking the "Clear Data" button.</li>
+    <li>Closing the browser tab automatically discards all in-memory tweet data.</li>
+    <li>You can uninstall the Extension at any time to remove all stored preferences.</li>
+  </ul>
+
+  <h2>7. Data Security</h2>
+  <p>Since no data is transmitted to external servers and all processing occurs locally in your browser, the risk of data interception is minimal. The Extension does not handle passwords, payment information, or other sensitive personal data.</p>
+
+  <h2>8. Children's Privacy</h2>
+  <p>The Extension is not directed at children under 13 and does not knowingly collect data from children.</p>
+
+  <h2>9. Disclaimer</h2>
+  <p>The Extension is intended for <strong>personal data backup and research purposes only</strong>. Users are responsible for complying with X (Twitter)'s Terms of Service and applicable laws when extracting tweet data. The Extension developers are not responsible for any misuse.</p>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+
+  <div class="contact">
+    <strong>Contact:</strong> If you have questions about this privacy policy, please open an issue on the Extension's GitHub repository or contact us at: <span class="highlight">support@x-tweet-extractor.example</span>
+  </div>
+</body>
+</html>
